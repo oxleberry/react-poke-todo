@@ -1,7 +1,8 @@
 
 import React, { Component } from 'react';
 import TodoModel from '../models/Todo.js';
-import Todos from '../components/Todos'
+import Todos from '../components/Todos.js';
+import CreateTodoForm from '../components/CreateTodoForm'
 
 class TodosContainer extends Component {
    constructor(){
@@ -9,12 +10,13 @@ class TodosContainer extends Component {
       this.state={
          todos: []
       }
+     this.createTodo = this.createTodo.bind(this);
    }
 
    componentDidMount(){
       this.fetchData()
    }
-   
+
    fetchData(){
       TodoModel.all().then((res) => {
          console.log(res);
@@ -24,15 +26,27 @@ class TodosContainer extends Component {
          })
       })
    }
-
-    render () {
-        return (
-            <div className='todosContainer'>
-                <h2>Catch Them All</h2>
-                <Todos todos={this.state.todos} />
-            </div>
-        )
-    }
+   createTodo(todo) {
+       let newTodo = {
+           name: todo
+       }
+       TodoModel.create(newTodo).then((res) => {
+           let todos = this.state.todos
+           let newTodos = todos.push(res.data)
+           this.setState({newTodos})
+       })
+   }
+   render(){
+     return (
+       <div className="todosComponent">
+         <Todos
+           todos={this.state.todos} />
+         <CreateTodoForm
+           createTodo={ this.createTodo }
+           />
+       </div>
+     )
+   }
 }
 
 export default TodosContainer;
