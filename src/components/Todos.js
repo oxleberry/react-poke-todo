@@ -4,11 +4,12 @@ import Todo from './Todo';
 
 class Todos extends Component {
     render () {
-      let todos = this.props.todos.map((todo, idx) => {
+      let todos = this.props.todos.map( (todo) => {
          return (
             <Todo
+               key={todo._id}
                todo={todo}
-               key={idx}
+               onDeleteTodo={this.props.onDeleteTodo}
             />
          )
       })
