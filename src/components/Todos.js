@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import Todo from './Todo';
+import TodoForm from './TodoForm'
 
 class Todos extends Component {
     render () {
@@ -9,7 +10,10 @@ class Todos extends Component {
             <Todo
                key={todo._id}
                todo={todo}
+               editingTodoId={this.props.editingTodoId}
+               onEditTodo={this.props.onEditTodo}
                onDeleteTodo={this.props.onDeleteTodo}
+               onUpdateTodo={this.props.onUpdateTodo}
             />
          )
       })

@@ -23,21 +23,21 @@ class CreateTodoForm extends Component {
       todo: ""
     })
   }
-  render(){
-    return (
-      <div className='createForm todoForm'>
-        <h2>Create Todo Here!</h2>
-        <form onSubmit={ this.onFormSubmit }>
-          <input
-            onChange={ this.onInputChange }
-            placeholder='Write a todo here ...'
-            type='text'
-            value={this.state.todo} />
-          <button type='submit'>Create Todo!</button>
-        </form>
-      </div>
-    )
-  }
+   render(){
+      return (
+         <div className='createForm todoForm'>
+            <h2>Create Todo Here!</h2>
+            <form onSubmit={ this.onFormSubmit }>
+               <input
+               onChange={ this.onInputChange }
+               placeholder='Write a todo here ...'
+               type='text'
+               value={this.state.todo} />
+               <button type='submit'>Create Todo!</button>
+            </form>
+         </div>
+      )
+   }
 }
 
 export default CreateTodoForm
